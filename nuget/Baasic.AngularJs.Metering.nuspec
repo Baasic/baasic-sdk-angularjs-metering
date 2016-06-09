@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Baasic.AngularJs.Metering</id>
+        <version>$version$</version>
+        <title>Baasic AngularJs Metering Module</title>
+        <authors>Kristijan Horvat</authors>
+        <owners>Mono Ltd.</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>AngularJS Metering module making calls to the Baasic API easy.</description>
+        <summary />
+		<projectUrl>https://github.com/Baasic/baasic-sdk-angularjs-metering</projectUrl>
+        <copyright>Mono Ltd.</copyright>
+        <language>en-US</language>
+        <tags>Javascript, Baasic, AngularJs, Metering</tags>
+		<dependencies>     
+            <dependency id="Baasic.Angular.Core" version="(,2.0)" />                        
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\dist\baasic-angular-metering.js" target="content\Scripts\baasic-angular-metering.js" />
+		<file src="..\dist\baasic-angular-metering.min.js" target="content\Scripts\baasic-angular-metering.min.js" />
+    </files>
+</package>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

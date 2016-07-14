@@ -18,8 +18,7 @@ baasicMeteringService.find({
   pageSize : 10,
   orderBy : '<field>',
   orderDirection : '<asc|desc>',
-  categories: 'Storage,Requests,Bandwidth',
-  search : '<search-phrase>'
+  categories: 'Storage,Requests,Bandwidth'
 })
 .success(function (collection) {
   // perform success action here

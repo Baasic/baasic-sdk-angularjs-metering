@@ -11,13 +11,14 @@
                 /**
                 * Parses find metering route which can be expanded with additional options. Supported items are: 
                 * - `applicationId` - The application identifier.
-                * - `categories` - The metering categories.
+                * - `categories` - The metering categories  in CSV format.
                 * - `from` - The from date.
                 * - `to` - The to date.
-                * - `names` - The name of the resource inside the category.
-                * - `statuses` - The operation status.
-                * - `endpoints` - The back-end endpoint.
-                * - `sources` - The metering collector source.
+                * - `names` - The name of the resource inside the category in CSV format.
+                * - `moduleNames` - The name of the resource inside the category in CSV format.
+                * - `statuses` - The operation status in CSV format.
+                * - `endpoints` - The back-end endpoint in CSV format.
+                * - `sources` - The metering collector source in CSV format.
                 * - `searchQuery` - A string value used to identify metering resources using the phrase search.
                 * - `page` - A value used to set the page number, i.e. to retrieve certain metering subset from the storage.
                 * - `rpp` - A value used to limit the size of result set per page.
@@ -26,7 +27,7 @@
                 * @method        
                 * @example baasicMeteringRouteService.find.expand({searchQuery: '<search-phrase>'});               
                 **/  			
-                find: uriTemplateService.parse("metering/data/{?applicationId,searchQuery,categories,from,to,names,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse("metering/data/{?applicationId,searchQuery,categories,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
                 /**
                 * Parses get route; this route doesn't expose any properties.
                 * @method        
@@ -53,10 +54,11 @@
                     * - `rateBy` - The sampling rate by minute,hour,day,week, month or year.
                     * - `from` - The from date.
                     * - `to` - The to date.
-                    * - `names` - The name of the resource inside the category.
-                    * - `statuses` - The operation status.
-                    * - `endpoints` - The back-end endpoint.
-                    * - `sources` - The metering collector source.                    
+                    * - `names` - The name of the resource inside the category in CSV format.
+                    * - `moduleNames` - The name of the resource inside the category in CSV format.
+                    * - `statuses` - The operation status in CSV format.
+                    * - `endpoints` - The back-end endpoint in CSV format.
+                    * - `sources` - The metering collector source in CSV format.                    
                     * - `page` - A value used to set the page number, i.e. to retrieve certain metering subset from the storage.
                     * - `rpp` - A value used to limit the size of result set per page.
                     * - `sort` - A string used to set the metering property to sort the result collection by.
@@ -64,7 +66,7 @@
                     * @method        
                     * @example baasicMeteringRouteService.statistics.find.expand({category: '<category-name-or-id>'});               
                     **/  			
-                    find: uriTemplateService.parse("metering/statistics/{category}/{?applicationId,rateBy,from,to,names,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                    find: uriTemplateService.parse("metering/statistics/{category}/{?applicationIds,rateBy,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
                 },
                 acl: {
 					/**

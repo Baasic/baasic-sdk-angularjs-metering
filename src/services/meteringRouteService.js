@@ -27,7 +27,7 @@
                 * @method        
                 * @example baasicMeteringRouteService.find.expand({searchQuery: '<search-phrase>'});               
                 **/  			
-                find: uriTemplateService.parse("metering/data/{?applicationId,searchQuery,categories,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse('metering/data/{?applicationId,searchQuery,categories,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}'),
                 /**
                 * Parses get route; this route doesn't expose any properties.
                 * @method        
@@ -39,7 +39,13 @@
                 * @method        
                 * @example baasicMeteringRouteService.create.expand({});              
                 **/  				
-                create: uriTemplateService.parse("metering/data"),               	
+                create: uriTemplateService.parse('metering/data'),     
+                /**
+                * Parses purge metering data route: this URI template does not expose any additional options.
+                * @method
+                * @example baasicMeteringRouteService.purge.expand({});  
+                **/  
+                purge: uriTemplateService.parse('metering/data/purge'),        	
                 /**
                 * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                 * @method
@@ -66,8 +72,28 @@
                     * @method        
                     * @example baasicMeteringRouteService.statistics.find.expand({category: '<category-name-or-id>'});               
                     **/  			
-                    find: uriTemplateService.parse("metering/statistics/{category}/{?applicationIds,rateBy,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                    find: uriTemplateService.parse('metering/statistics/{category}/{?applicationIds,rateBy,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}'),
                 },
+                batch:{
+                    /**
+                    * Parses create route; this URI template does not expose any additional options.
+                    * @method batch.create       
+                    * @example baasicMeteringRouteService.batch.create.expand({});              
+                    **/  				
+                    create: uriTemplateService.parse('metering/data/batch'),
+                    /**
+                    * Parses remove route; this URI template does not expose any additional options.
+                    * @method batch.remove       
+                    * @example baasicMeteringRouteService.batch.remove.expand({});              
+                    **/                      
+                    remove: uriTemplateService.parse('metering/data/batch'),
+                    /**
+                    * Parses update route; this URI template does not expose any additional options.
+                    * @method batch.update       
+                    * @example baasicMeteringRouteService.batch.update.expand({});              
+                    **/                    
+                    update: uriTemplateService.parse('metering/data/batch')
+                },               
                 acl: {
 					/**
 					* Parses get metering acl route; this URI template should be expanded with the Id of the metering.					

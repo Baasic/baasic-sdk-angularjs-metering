@@ -114,7 +114,65 @@ baasicMeteringCategoryService.remove(meteringCategory)
                 * @method        
                 * @example baasicMeteringCategoryService.routeService.get.expand(expandObject);
                 **/  							    
-				        routeService: routeService
+				routeService: routeService,
+                batch: {
+                  /**
+                  * Returns a promise that is resolved once the create category action has been performed; this action creates new category resources.
+                  * @method batch.create       
+                  * @example 
+ baasicMeteringCategoryService.batch.create([{
+    aggregateFunction : '<aggregateFunction>',
+    category : '<name>',
+    defaultSamplingRate: '<defaultSamplingRate>',
+    slug: '<slug>',
+    unitFactor: '<unitFactor>',
+    unitName: '<unitName>'
+  }])
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });
+                  **/ 				
+                  create: function (data) {
+                      return baasicApiHttp.post(routeService.batch.create.expand(), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                  }, 
+                  /**
+                  * Returns a promise that is resolved once the update category action has been performed; this action updates specified category resources.
+                  * @method batch.update       
+                  * @example 
+  baasicMeteringCategoryService.batch.update(companies)
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });
+                  **/ 				
+                  update: function (data) {
+                      return baasicApiHttp.post(routeService.batch.update.expand(), baasicApiService.updateParams(data)[baasicConstants.modelPropertyName]);
+                  },                                      
+                  /**
+                  * Returns a promise that is resolved once the remove action has been performed. This action will remove category resources from the system if successfully completed. 
+                  * @method batch.remove       
+                  * @example 			 
+  baasicCompanyService.batch.remove(companyIds)
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });		
+                  **/		                  
+                  remove: function(ids) {
+                    return baasicApiHttp({
+                        url: routeService.batch.remove.expand(),
+                        method: 'DELETE',
+                        data: ids
+                    });                         
+                  }
+                }                
             };
         }]);
 }(angular, module));

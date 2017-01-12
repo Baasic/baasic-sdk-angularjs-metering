@@ -18,7 +18,7 @@
                 * @method        
                 * @example baasicMeteringCategoryRouteService.find.expand({searchQuery: '<search-phrase>'});               
                 **/  			
-                find: uriTemplateService.parse("metering/categories/{?searchQuery,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse('metering/categories/{?searchQuery,page,rpp,sort,embed,fields}'),
                 /**
                 * Parses get route; this route doesn't expose any properties.
                 * @method        
@@ -30,13 +30,33 @@
                 * @method        
                 * @example baasicMeteringCategoryRouteService.create.expand({});              
                 **/  				
-                create: uriTemplateService.parse("metering/categories"),               	
+                create: uriTemplateService.parse('metering/categories'),               	
                 /**
                 * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                 * @method
                 * @example baasicMeteringCategoryRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
                 **/  				
-                parse: uriTemplateService.parse
+                parse: uriTemplateService.parse,
+                batch:{
+                    /**
+                    * Parses create route; this URI template does not expose any additional options.
+                    * @method batch.create       
+                    * @example baasicMeteringCategoryRouteService.batch.create.expand({});              
+                    **/  				
+                    create: uriTemplateService.parse('metering/categories/batch'),
+                    /**
+                    * Parses remove route; this URI template does not expose any additional options.
+                    * @method batch.remove       
+                    * @example baasicMeteringCategoryRouteService.batch.remove.expand({});              
+                    **/                      
+                    remove: uriTemplateService.parse('metering/categories/batch'),
+                    /**
+                    * Parses update route; this URI template does not expose any additional options.
+                    * @method batch.update       
+                    * @example baasicMeteringCategoryRouteService.batch.update.expand({});              
+                    **/                    
+                    update: uriTemplateService.parse('metering/categories/batch')
+                }                   
             };
         }]);
 }(angular, module));

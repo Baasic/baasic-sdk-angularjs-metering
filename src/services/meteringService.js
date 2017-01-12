@@ -105,13 +105,84 @@ baasicMeteringService.remove(meteringData)
                 remove: function (data) {
                     var params = baasicApiService.removeParams(data);
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
-                },                 
+                },  
+                 /**
+                 * Returns a promise that is resolved once the purge action has been performed. This action will remove all metering resources from the system if successfully completed. 
+                 * @method        
+                 * @example 			 
+baasicMeteringService.purge()
+.success(function (data) {
+  // perform success action here
+})
+.error(function (response, status, headers, config) {
+  // perform error handling here
+});		
+				**/	                 
+                purge: function(){
+                    return baasicApiHttp.delete(routeService.purge.expand({})); 
+                },    
                 /**
                 * Provides direct access to `routeService`.
                 * @method        
                 * @example baasicMeteringService.routeService.get.expand(expandObject);
                 **/  							    
-				        routeService: routeService,
+				routeService: routeService,
+                batch: {
+                  /**
+                  * Returns a promise that is resolved once the create data action has been performed; this action creates new data resources.
+                  * @method batch.create       
+                  * @example 
+ baasicMeteringService.batch.create([{
+    applicationId : '<applicationId>',
+    category : '<category>',
+    name: '<name>',
+    value: '<value>' 
+  }])
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });
+                  **/ 				
+                  create: function (data) {
+                      return baasicApiHttp.post(routeService.batch.create.expand(), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                  }, 
+                  /**
+                  * Returns a promise that is resolved once the update data action has been performed; this action updates specified data resources.
+                  * @method batch.update       
+                  * @example 
+  baasicMeteringService.batch.update(companies)
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });
+                  **/ 				
+                  update: function (data) {
+                      return baasicApiHttp.post(routeService.batch.update.expand(), baasicApiService.updateParams(data)[baasicConstants.modelPropertyName]);
+                  },                                      
+                  /**
+                  * Returns a promise that is resolved once the remove action has been performed. This action will remove data resources from the system if successfully completed. 
+                  * @method batch.remove       
+                  * @example 			 
+  baasicMeteringService.batch.remove(companyIds)
+  .success(function (data) {
+    // perform success action here
+  })
+  .error(function (response, status, headers, config) {
+    // perform error handling here
+  });		
+                  **/		                  
+                  remove: function(ids) {
+                    return baasicApiHttp({
+                        url: routeService.batch.remove.expand(),
+                        method: 'DELETE',
+                        data: ids
+                    });                         
+                  }
+                },             
                 statistics:{
                    /**
                    * Returns a promise that is resolved once the find action has been performed. Success response returns a list of metering resources matching the given criteria.

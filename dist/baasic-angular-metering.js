@@ -1,3 +1,8 @@
+/*
+ Baasic AngularJS Metering v0.9.0
+ (c) 2014-2016 Mono http://baasic.com
+ License: MIT
+*/
 (function (angular, undefined) { /* exported module */
     /** 
      * @description The angular.module is a global place for creating, registering or retrieving modules. All modules should be registered in an application using this mechanism.  An angular module is a container for the different parts of your app - services, directives etc. In order to use `baasic.metering` module functionality it must be added as a dependency to your app.
@@ -43,7 +48,7 @@
                  * @method        
                  * @example baasicMeteringCategoryRouteService.find.expand({searchQuery: '<search-phrase>'});               
                  **/
-                find: uriTemplateService.parse("metering/categories/{?searchQuery,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse('metering/categories/{?searchQuery,page,rpp,sort,embed,fields}'),
                 /**
                  * Parses get route; this route doesn't expose any properties.
                  * @method        
@@ -55,13 +60,33 @@
                  * @method        
                  * @example baasicMeteringCategoryRouteService.create.expand({});              
                  **/
-                create: uriTemplateService.parse("metering/categories"),
+                create: uriTemplateService.parse('metering/categories'),
                 /**
                  * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                  * @method
                  * @example baasicMeteringCategoryRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
                  **/
-                parse: uriTemplateService.parse
+                parse: uriTemplateService.parse,
+                batch: {
+                    /**
+                     * Parses create route; this URI template does not expose any additional options.
+                     * @method batch.create       
+                     * @example baasicMeteringCategoryRouteService.batch.create.expand({});              
+                     **/
+                    create: uriTemplateService.parse('metering/categories/batch'),
+                    /**
+                     * Parses remove route; this URI template does not expose any additional options.
+                     * @method batch.remove       
+                     * @example baasicMeteringCategoryRouteService.batch.remove.expand({});              
+                     **/
+                    remove: uriTemplateService.parse('metering/categories/batch'),
+                    /**
+                     * Parses update route; this URI template does not expose any additional options.
+                     * @method batch.update       
+                     * @example baasicMeteringCategoryRouteService.batch.update.expand({});              
+                     **/
+                    update: uriTemplateService.parse('metering/categories/batch')
+                }
             };
         }]);
     }(angular, module));
@@ -191,7 +216,65 @@
                  * @method        
                  * @example baasicMeteringCategoryService.routeService.get.expand(expandObject);
                  **/
-                routeService: routeService
+                routeService: routeService,
+                batch: {
+                    /**
+                     * Returns a promise that is resolved once the create category action has been performed; this action creates new category resources.
+                     * @method batch.create       
+                     * @example 
+                     baasicMeteringCategoryService.batch.create([{
+                     aggregateFunction : '<aggregateFunction>',
+                     category : '<name>',
+                     defaultSamplingRate: '<defaultSamplingRate>',
+                     slug: '<slug>',
+                     unitFactor: '<unitFactor>',
+                     unitName: '<unitName>'
+                     }])
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });
+                     **/
+                    create: function (data) {
+                        return baasicApiHttp.post(routeService.batch.create.expand(), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                    },
+                    /**
+                     * Returns a promise that is resolved once the update category action has been performed; this action updates specified category resources.
+                     * @method batch.update       
+                     * @example 
+                     baasicMeteringCategoryService.batch.update(companies)
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });
+                     **/
+                    update: function (data) {
+                        return baasicApiHttp.post(routeService.batch.update.expand(), baasicApiService.updateParams(data)[baasicConstants.modelPropertyName]);
+                    },
+                    /**
+                     * Returns a promise that is resolved once the remove action has been performed. This action will remove category resources from the system if successfully completed. 
+                     * @method batch.remove       
+                     * @example 			 
+                     baasicCompanyService.batch.remove(companyIds)
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });		
+                     **/
+                    remove: function (ids) {
+                        return baasicApiHttp({
+                            url: routeService.batch.remove.expand(),
+                            method: 'DELETE',
+                            data: ids
+                        });
+                    }
+                }
             };
         }]);
     }(angular, module));
@@ -234,7 +317,7 @@
                  * @method        
                  * @example baasicMeteringRouteService.find.expand({searchQuery: '<search-phrase>'});               
                  **/
-                find: uriTemplateService.parse("metering/data/{?applicationId,searchQuery,categories,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse('metering/data/{?applicationId,searchQuery,categories,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}'),
                 /**
                  * Parses get route; this route doesn't expose any properties.
                  * @method        
@@ -246,7 +329,13 @@
                  * @method        
                  * @example baasicMeteringRouteService.create.expand({});              
                  **/
-                create: uriTemplateService.parse("metering/data"),
+                create: uriTemplateService.parse('metering/data'),
+                /**
+                 * Parses purge metering data route: this URI template does not expose any additional options.
+                 * @method
+                 * @example baasicMeteringRouteService.purge.expand({});  
+                 **/
+                purge: uriTemplateService.parse('metering/data/purge'),
                 /**
                  * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                  * @method
@@ -273,7 +362,27 @@
                      * @method        
                      * @example baasicMeteringRouteService.statistics.find.expand({category: '<category-name-or-id>'});               
                      **/
-                    find: uriTemplateService.parse("metering/statistics/{category}/{?applicationIds,rateBy,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}"),
+                    find: uriTemplateService.parse('metering/statistics/{category}/{?applicationIds,rateBy,from,to,names,moduleNames,statuses,endpoints,sources,page,rpp,sort,embed,fields}'),
+                },
+                batch: {
+                    /**
+                     * Parses create route; this URI template does not expose any additional options.
+                     * @method batch.create       
+                     * @example baasicMeteringRouteService.batch.create.expand({});              
+                     **/
+                    create: uriTemplateService.parse('metering/data/batch'),
+                    /**
+                     * Parses remove route; this URI template does not expose any additional options.
+                     * @method batch.remove       
+                     * @example baasicMeteringRouteService.batch.remove.expand({});              
+                     **/
+                    remove: uriTemplateService.parse('metering/data/batch'),
+                    /**
+                     * Parses update route; this URI template does not expose any additional options.
+                     * @method batch.update       
+                     * @example baasicMeteringRouteService.batch.update.expand({});              
+                     **/
+                    update: uriTemplateService.parse('metering/data/batch')
                 },
                 acl: {
                     /**
@@ -445,11 +554,82 @@
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
                 },
                 /**
+                 * Returns a promise that is resolved once the purge action has been performed. This action will remove all metering resources from the system if successfully completed. 
+                 * @method        
+                 * @example 			 
+                 baasicMeteringService.purge()
+                 .success(function (data) {
+                 // perform success action here
+                 })
+                 .error(function (response, status, headers, config) {
+                 // perform error handling here
+                 });
+                 **/
+                purge: function () {
+                    return baasicApiHttp.delete(routeService.purge.expand({}));
+                },
+                /**
                  * Provides direct access to `routeService`.
                  * @method        
                  * @example baasicMeteringService.routeService.get.expand(expandObject);
                  **/
                 routeService: routeService,
+                batch: {
+                    /**
+                     * Returns a promise that is resolved once the create data action has been performed; this action creates new data resources.
+                     * @method batch.create       
+                     * @example 
+                     baasicMeteringService.batch.create([{
+                     applicationId : '<applicationId>',
+                     category : '<category>',
+                     name: '<name>',
+                     value: '<value>' 
+                     }])
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });
+                     **/
+                    create: function (data) {
+                        return baasicApiHttp.post(routeService.batch.create.expand(), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                    },
+                    /**
+                     * Returns a promise that is resolved once the update data action has been performed; this action updates specified data resources.
+                     * @method batch.update       
+                     * @example 
+                     baasicMeteringService.batch.update(companies)
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });
+                     **/
+                    update: function (data) {
+                        return baasicApiHttp.post(routeService.batch.update.expand(), baasicApiService.updateParams(data)[baasicConstants.modelPropertyName]);
+                    },
+                    /**
+                     * Returns a promise that is resolved once the remove action has been performed. This action will remove data resources from the system if successfully completed. 
+                     * @method batch.remove       
+                     * @example 			 
+                     baasicMeteringService.batch.remove(companyIds)
+                     .success(function (data) {
+                     // perform success action here
+                     })
+                     .error(function (response, status, headers, config) {
+                     // perform error handling here
+                     });		
+                     **/
+                    remove: function (ids) {
+                        return baasicApiHttp({
+                            url: routeService.batch.remove.expand(),
+                            method: 'DELETE',
+                            data: ids
+                        });
+                    }
+                },
                 statistics: {
                     /**
                      * Returns a promise that is resolved once the find action has been performed. Success response returns a list of metering resources matching the given criteria.

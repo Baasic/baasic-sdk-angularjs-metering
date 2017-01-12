@@ -29,7 +29,7 @@ The angular.module is a global place for creating, registering or retrieving mod
 
 
 
-*(c) 2015 Mono*
+*(c) 2017 Mono*
 
 **Author:** Mono
 

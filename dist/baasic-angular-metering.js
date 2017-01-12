@@ -1,7 +1,7 @@
 (function (angular, undefined) { /* exported module */
     /** 
      * @description The angular.module is a global place for creating, registering or retrieving modules. All modules should be registered in an application using this mechanism.  An angular module is a container for the different parts of your app - services, directives etc. In order to use `baasic.metering` module functionality it must be added as a dependency to your app.
-     * @copyright (c) 2015 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @module baasic.metering
@@ -66,12 +66,12 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - [URI Template](https://github.com/Baasic/uritemplate-js) syntax enables expanding the Baasic route templates to Baasic REST URIs providing it with an object that contains URI parameters.
      - All end-point objects are transformed by the associated route service.
      */
@@ -197,12 +197,12 @@
     }(angular, module));
 
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - All end-point objects are transformed by the associated route service.
      */
 
@@ -327,12 +327,12 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - [URI Template](https://github.com/Baasic/uritemplate-js) syntax enables expanding the Baasic route templates to Baasic REST URIs providing it with an object that contains URI parameters.
      - All end-point objects are transformed by the associated route service.
      */
@@ -560,12 +560,12 @@
     }(angular, module));
 
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - All end-point objects are transformed by the associated route service.
      */
 
@@ -594,12 +594,12 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - [URI Template](https://github.com/Baasic/uritemplate-js) syntax enables expanding the Baasic route templates to Baasic REST URIs providing it with an object that contains URI parameters.
      - All end-point objects are transformed by the associated route service.
      */
@@ -663,12 +663,12 @@
     }(angular, module));
 
     /**
-     * @copyright (c) 2016 Mono
+     * @copyright (c) 2017 Mono
      * @license MIT
      * @author Mono
      * @overview 
      ***Notes:**
-     - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
+     - Refer to the [Baasic REST API](http://dev.baasic.com/api/reference/home) for detailed information about available Baasic REST API end-points.
      - All end-point objects are transformed by the associated route service.
      */
 

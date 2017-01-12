@@ -1,6 +1,6 @@
 # Baasic Metering AngularJS SDK
 
-Baasic AngularJS Metering library provides access to [Baasic REST API](https://api.baasic.com/beta) metering end-points.
+Baasic AngularJS Metering library provides access to [Baasic REST API](http://dev.baasic.com/api/reference/home) metering end-points.
 
 ## Dependencies
 
